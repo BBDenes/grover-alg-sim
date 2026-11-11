@@ -9,6 +9,17 @@ class GroverEngine{
         this.init(n, targetInd);
     }
 
+    getFormattedState(){
+        let arr = [];
+        for (let i = 0; i < this.state.length; i++) {
+            arr[i] = {};
+            arr[i].key = i;
+            arr[i].value = this.state[i];
+        }
+
+        return arr;
+    }
+
     init(n, targetInd){
         this.n = n;
         this.N = 1 << n;
@@ -23,7 +34,7 @@ class GroverEngine{
             this.#oracle();
             this.nextStep = Steps.DIFFUSION;
         }else if(this.nextStep == Steps.DIFFUSION){
-            this.#diffusion(this.state, this.targetInd);
+            this.#diffusion();
             this.nextStep = Steps.ORACLE;
         }
         
@@ -37,14 +48,14 @@ class GroverEngine{
             sum += element;
         }
 
-        let average = sum/state.length;
-        for (let i = 0; i < state.length; i++) {
-            state[i] = 2*average - state[i];
+        let average = sum/this.state.length;
+        for (let i = 0; i < this.state.length; i++) {
+            this.state[i] = 2*average - this.state[i];
         }
     }
 
     #oracle(){
-        this.state[this.targetInd] *= -1;
+        this.state[this.targetInd] = this.state[this.targetInd] * -1;
     }
 
     getCoordinates(){
