@@ -1,7 +1,7 @@
 
 const Steps = {
-    ORACLE: "oracle",
-    DIFFUSION: "diffusion"
+    ORACLE: "Orákulum",
+    DIFFUSION: "Diffúzió"
 };
 
 class GroverEngine{
@@ -12,9 +12,7 @@ class GroverEngine{
     getFormattedState(){
         let arr = [];
         for (let i = 0; i < this.state.length; i++) {
-            arr[i] = {};
-            arr[i].key = i;
-            arr[i].value = this.state[i];
+            arr[i] = {key: i, value: this.state[i]};
         }
 
         return arr;

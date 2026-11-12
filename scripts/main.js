@@ -1,31 +1,29 @@
 let n;
 let N;
 let state;
-
+let engine;
 let graph = initGraph("probCanvas","Valószínűségi amplitudók eloszlása");
 
-var testData1 = [
-    { key: "|000>", value: 0.35 },
-    { key: "|001>", value: 0.35 },
-    { key: "|010>", value: -0.35 },
-    { key: "|011>", value: 0.35 },
-    { key: "|100>", value: 0.35 },
-    { key: "|101>", value: 0.35 },
-    { key: "|110>", value: 0.35 },
-    { key: "|111>", value: 0.35 }
-];
-var testData2 = [
-    { key: "|000>", value: 0.35 },
-    { key: "|001>", value: 0.4 },
-    { key: "|010>", value: 0.5 },
-    { key: "|011>", value: 0.4 },
-    { key: "|100>", value: 0.35 },
-    { key: "|101>", value: 0.35 },
-    { key: "|110>", value: 0.35 },
-    { key: "|111>", value: 0.35 }
-];
 
-updateGraph(graph, testData1);
+function initScene() {
+    engine = new GroverEngine(3, 5);
+    render();
+}
+initScene();
+
+document.getElementById("stepBtn").addEventListener("click", ()=>{
+    stepEngine();
+});
+document.getElementById("resetBtn").addEventListener("click", ()=>{
+    initScene();
+});
+
+
+function render() {
+    updateGraph(graph, engine.getFormattedState());
+    drawVectorView('vectorCanvas', engine);
+    updatePhaseText("phase", engine);
+}
 
 function init(size) {
     n = size;
@@ -49,4 +47,9 @@ function getCoordinates(state, targetInd){
 
 function getProbability(state, targetInd){
     return Math.pow(state[targetInd], 2);
+}
+
+function stepEngine() {
+    engine.stepForward();
+    render();
 }
