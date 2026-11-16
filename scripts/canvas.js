@@ -68,7 +68,7 @@ function initGraph(id, title) {
 }
 
 
-function updateGraph(chart, data){
+function updateGraph(chart, data, isAnimated){
     var dataset = chart.data.datasets[0];
     chart.data.labels = [];
     dataset.data = [];
@@ -81,7 +81,7 @@ function updateGraph(chart, data){
     dataset.label = "Valószínűségi amplitudó"
     
 
-    chart.update();
+    chart.update(isAnimated? null: "none");
 
 }
 

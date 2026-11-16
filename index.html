@@ -16,21 +16,27 @@
             <canvas id="vectorCanvas"></canvas>
         </div>
     </div>
-    <p id="phase">Kövezkező fázis:</p>
+    <p id="phase">Kövezkező lépés:</p>
+    <div id="inputContainer">
+        <p>Qbitek száma: </p>
+        <input class="inputField" type="number" name="Qbitek száma (n)" id="qbitinput" value="3"/>
+        <p>A keresett elem indexe: </p>
+        <input class="inputField" type="number" name="A keresett index" id="indexInput" value="2"/>
+    </div>
     <div class="buttonContainer">
         <button id="stepBtn" class="btn">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M21 36.8c12.9-7 28.7-6.3 41 1.8L320 208.1 320 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 384c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-144.1-258 169.6c-12.3 8.1-28 8.8-41 1.8S0 454.7 0 440L0 72C0 57.3 8.1 43.8 21 36.8z"/></svg>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M21 36.8c12.9-7 28.7-6.3 41 1.8L320 208.1 320 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 384c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-144.1-258 169.6c-12.3 8.1-28 8.8-41 1.8S0 454.7 0 440L0 72C0 57.3 8.1 43.8 21 36.8z"/></svg>
             <br>
             <p class="btnLabel">Léptetés</p>
         </button>
 
         <button id="startBtn" class="btn">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M91.2 36.9c-12.4-6.8-27.4-6.5-39.6 .7S32 57.9 32 72l0 368c0 14.1 7.5 27.2 19.6 34.4s27.2 7.5 39.6 .7l336-184c12.8-7 20.8-20.5 20.8-35.1s-8-28.1-20.8-35.1l-336-184z"/></svg>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M91.2 36.9c-12.4-6.8-27.4-6.5-39.6 .7S32 57.9 32 72l0 368c0 14.1 7.5 27.2 19.6 34.4s27.2 7.5 39.6 .7l336-184c12.8-7 20.8-20.5 20.8-35.1s-8-28.1-20.8-35.1l-336-184z"/></svg>
             <br>
             <p class="btnLabel">Normál sebesség</p>
         </button>
         <button id="forwardBtn" class="btn">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M371.7 43.1C360.1 32 343 28.9 328.3 35.2S304 56 304 72l0 136.3-172.3-165.1C120.1 32 103 28.9 88.3 35.2S64 56 64 72l0 368c0 16 9.6 30.5 24.3 36.8s31.8 3.2 43.4-7.9L304 303.7 304 440c0 16 9.6 30.5 24.3 36.8s31.8 3.2 43.4-7.9l192-184c7.9-7.5 12.3-18 12.3-28.9s-4.5-21.3-12.3-28.9l-192-184z"/></svg>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M371.7 43.1C360.1 32 343 28.9 328.3 35.2S304 56 304 72l0 136.3-172.3-165.1C120.1 32 103 28.9 88.3 35.2S64 56 64 72l0 368c0 16 9.6 30.5 24.3 36.8s31.8 3.2 43.4-7.9L304 303.7 304 440c0 16 9.6 30.5 24.3 36.8s31.8 3.2 43.4-7.9l192-184c7.9-7.5 12.3-18 12.3-28.9s-4.5-21.3-12.3-28.9l-192-184z"/></svg>
             <br>
             <p class="btnLabel">Gyors sebesség</p>
         </button>
@@ -42,6 +48,19 @@
         </button>
 
     </div>
+
+    <h3><b>Használat:</b></h3>
+    <p id="howto">
+        Először meg kell adni a Qbitek számát (n), illetve a keresett elem indexét. Ezután a "Visszaállítás" gombbal lehet a rendszert
+        stabil állapotba hozni. Ezt követően van lehetőség léptetni, ez esetben manuálisan lépegethetünk végig az egyes lépéseken.
+        Van lehetőség arra is, hogy magától lépjen a program, ehhez a lépések számát kell megadni, majd megnyomni a Normál- vagy Gyors sebesség gombot.
+        A valószínűségi amplitudókat mutató grafikonon az egeret az egyes pontokon tartva kiírja azok értékét. 
+    </p>
+    <h3><b>Felhasznált könyvtárak és irodalom: </b></h3>
+    <ul>
+        <li>Font Awesome: A gombokon található ikonok. <a href="https://fontawesome.com/">Link</a></li>
+        <li>Chart.js: A bal oldali grafikont lehetővé tévő könyvtár. <a href="https://www.chartjs.org/">Link</a></li>
+    </ul>
     <script src="scripts/chart.js"></script>
     <script src="scripts/groverEngine.js"></script>
     <script src="scripts/canvas.js"></script>

@@ -12,6 +12,21 @@ body{
     margin: auto;
 }
 
+#inputContainer{
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    width: 100%;
+}
+
+.inputField{
+    margin: 1em;
+}
+
+#howto{
+    width: 50%;
+}
+
 .btn{
     
     width: 20%;
@@ -36,6 +51,10 @@ body{
 .btn:hover{
     background-color: rgb(43, 43, 43);
     
+}
+
+input{
+    margin-right: 1rem;
 }
 
 svg.icon {
@@ -65,4 +84,8 @@ svg.icon {
     width: 40%;
     aspect-ratio: 1 / 1;
     position: relative;
+}
+
+a {
+    color: white;
 }
