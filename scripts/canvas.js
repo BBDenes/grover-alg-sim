@@ -2,23 +2,31 @@ function initGraph(id, title) {
     var chrt = document.getElementById(id);
     var graph = new Chart(chrt, {
         type: 'line',
-        backgroundColor: 'rgba(29, 78, 216, 0.2)',
+        backgroundColor: 'rgb(255, 255, 255)',
         data: {
             labels: [],
             datasets: [{
                 tension: 0.4,
                 cubicInterpolationMode: 'monotone',
-                fill: true
+                fill: true,
+                borderColor: '#df79c7',
+                backgroundColor: 'rgba(223, 121, 199, 0.2)', 
+                pointBackgroundColor: '#df79c7', 
             }],
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
+                legend: {
+                    labels: {
+                        color: 'white'
+                    }
+                },
                title: {
                   display: false,
                   text: title,
-                  color: 'navy',
+                  color: 'white',
                   position: 'bottom',
                   align: 'center',
                   font: {
@@ -29,9 +37,27 @@ function initGraph(id, title) {
                }
             },
             scales: {
+                x: {
+                    ticks: {
+                        color: 'white' 
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.2)' 
+                    },
+                },
                 y: {
                     suggestedMin: -1,
-                    suggestedMax: 1
+                    suggestedMax: 1,
+                    ticks: {
+                        color: 'white' 
+                    },
+                    grid: {
+                        color: (context) => context.tick?.value === 0 ? 'white' : 'rgba(255, 255, 255, 0.2)',
+                    
+                    },
+                    border: {
+                        color: 'white'
+                    }
                 }
             }
             
@@ -81,7 +107,7 @@ function drawVectorView(canvasId, engine) {
 
     ctx.beginPath();
     ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
-    ctx.strokeStyle = '#334155';
+    ctx.strokeStyle = '#ffffff';
     ctx.lineWidth = 2;
     ctx.stroke();
 
@@ -90,11 +116,11 @@ function drawVectorView(canvasId, engine) {
     ctx.lineTo(cx + radius + 20, cy);
     ctx.moveTo(cx, cy + radius + 20);
     ctx.lineTo(cx, cy - radius - 20);
-    ctx.strokeStyle = '#64748b';
+    ctx.strokeStyle = '#ffffff';
     ctx.lineWidth = 1;
     ctx.stroke();
 
-    ctx.fillStyle = '#1e293b';
+    ctx.fillStyle = '#df79c7';
     ctx.font = 'bold 13px monospace';
     ctx.fillText('|w⊥⟩', cx + radius + 8, cy - 8);
     ctx.fillText('|w⟩', cx + 8, cy - radius - 10);
@@ -102,10 +128,10 @@ function drawVectorView(canvasId, engine) {
 
     const initY = 1 / Math.sqrt(engine.N);
     const initX = Math.sqrt(1 - initY * initY);
-    drawArrow(ctx, cx, cy, toPixelX(initX), toPixelY(initY), '#64748b', '|s⟩', true);
+    drawArrow(ctx, cx, cy, toPixelX(initX), toPixelY(initY), '#df79c7', '|s⟩', true);
 
     const { x, y } = engine.getCoordinates();
-    drawArrow(ctx, cx, cy, toPixelX(x), toPixelY(y), '#1d4ed8', '|ψ⟩', false);
+    drawArrow(ctx, cx, cy, toPixelX(x), toPixelY(y), '#df79c7', '|ψ⟩', false);
 }
 
 function drawArrow(ctx, fromX, fromY, toX, toY, color, label = '', isDashed = false) {
