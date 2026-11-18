@@ -10,8 +10,8 @@ function initScene() {
     let n = parseInt(document.getElementById("qbitinput").value);
     let desiredIndex = parseInt(document.getElementById("indexInput").value);
     
-    if (n < 1) {
-        alert("A qbitek száma nem lehet 1 alatti!");
+    if (n < 1 || n > 20) {
+        alert("A qbitek száma nem lehet 1 alatti, illetve 20 feletti!");
         return;
     }
     if (desiredIndex >= 1 << n || desiredIndex < 0) {
