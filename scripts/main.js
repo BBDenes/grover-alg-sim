@@ -4,6 +4,7 @@
 let engine;
 let currentTick;
 let graph = initGraph("probCanvas","Valószínűségi amplitudók eloszlása");
+let steps = 5;
 
 function initScene() {
     let n = parseInt(document.getElementById("qbitinput").value);
@@ -42,11 +43,13 @@ document.getElementById("resetBtn").addEventListener("click", ()=>{
     initScene();
 });
 document.getElementById("startBtn").addEventListener("click", ()=>{
-    currentTick = startTick(2, 1500, true);
-
+    steps = parseInt(document.getElementById("stepInput").value);
+    currentTick = startTick(steps, 1500, true);
+    
 });
 document.getElementById("forwardBtn").addEventListener("click", ()=>{
-    currentTick = startTick(5, 300, false);
+    steps = parseInt(document.getElementById("stepInput").value);
+    currentTick = startTick(steps, 300, false);
 });
 
 
