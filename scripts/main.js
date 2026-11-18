@@ -31,15 +31,17 @@ function startTick(steps, millis, isAnimated) {
             clearInterval(current);
         }
     },millis);
-    return 
+    return current;
 }
 
 initScene();
 
 document.getElementById("stepBtn").addEventListener("click", ()=>{
+    clearInterval(currentTick);
     stepEngine(true);
 });
 document.getElementById("resetBtn").addEventListener("click", ()=>{
+    clearInterval(currentTick);
     initScene();
 });
 document.getElementById("startBtn").addEventListener("click", ()=>{
