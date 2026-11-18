@@ -15,12 +15,47 @@ body{
 #inputContainer{
     display: flex;
     justify-content: center;
-    margin: 1em;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin: 1.5em auto;
     width: 100%;
 }
 
-.inputField{
-    margin: 1em;
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.inputGroup label {
+    font-size: 0.9rem;
+    color: #cccccc;
+    font-weight: bold;
+}
+
+.inputField {
+    width: 140px;
+    padding: 10px 12px;
+    background-color: rgb(43, 43, 43);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    color-scheme: dark;
+}
+
+.inputField:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.inputField:focus {
+    border-color: #ffffff;
+    background-color: rgb(35, 35, 35);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
 }
 
 #howto{

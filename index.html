@@ -18,10 +18,18 @@
     </div>
     <p id="phase">Kövezkező lépés:</p>
     <div id="inputContainer">
-        <p>Qbitek száma: </p>
-        <input class="inputField" type="number" name="Qbitek száma (n)" id="qbitinput" value="3"/>
-        <p>A keresett elem indexe: </p>
-        <input class="inputField" type="number" name="A keresett index" id="indexInput" value="2"/>
+        <div class="inputGroup">
+            <label for="qbitinput">Qbitek száma:</label>
+            <input class="inputField" type="number" name="Qbitek száma (n)" id="qbitinput" value="3" min="1"/>
+        </div>
+        <div class="inputGroup">
+            <label for="indexInput">A keresett elem indexe:</label>
+            <input class="inputField" type="number" name="A keresett index" id="indexInput" value="2" min="0"/>
+        </div>
+        <div class="inputGroup">
+            <label for="stepInput">Lépések száma:</label>
+            <input class="inputField" type="number" name="A lépések száma" id="stepInput" value="5" min="1"/>
+        </div>
     </div>
     <div class="buttonContainer">
         <button id="stepBtn" class="btn">
