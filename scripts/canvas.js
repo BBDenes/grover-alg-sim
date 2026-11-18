@@ -24,7 +24,7 @@ function initGraph(id, title) {
                     }
                 },
                title: {
-                  display: false,
+                  display: true,
                   text: title,
                   color: 'white',
                   position: 'bottom',

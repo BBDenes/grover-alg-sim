@@ -1,6 +1,6 @@
-let n;
-let N;
-let state;
+//let n;
+//let N;
+//let state;
 let engine;
 let currentTick;
 let graph = initGraph("probCanvas","Valószínűségi amplitudók eloszlása");
