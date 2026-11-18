@@ -175,9 +175,8 @@ function drawArrow(ctx, fromX, fromY, toX, toY, color, label = '', isDashed = fa
 }
 
 function updatePhaseText(id, engine) {
-    let elem = document.getElementById(id);
-
-    elem.textContent = `Következő lépés: ${engine.nextStep}`;
+    let stepElem = document.getElementById(id);
+    stepElem.textContent = `Következő lépés: ${engine.nextStep}`;
 }
 
 

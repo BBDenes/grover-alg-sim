@@ -16,6 +16,7 @@ function initScene() {
     }
     if (desiredIndex >= 1 << n || desiredIndex < 0) {
         alert("A keresett index nincs a megadott határokon belül!");
+        return;
     }
 
     engine = new GroverEngine(n, desiredIndex);
@@ -45,11 +46,13 @@ document.getElementById("resetBtn").addEventListener("click", ()=>{
     initScene();
 });
 document.getElementById("startBtn").addEventListener("click", ()=>{
+    clearInterval(currentTick);
     steps = parseInt(document.getElementById("stepInput").value);
     currentTick = startTick(steps, 1500, true);
     
 });
 document.getElementById("forwardBtn").addEventListener("click", ()=>{
+    clearInterval(currentTick);
     steps = parseInt(document.getElementById("stepInput").value);
     currentTick = startTick(steps, 300, false);
 });
@@ -59,6 +62,7 @@ function render(isAnimated) {
     updateGraph(graph, engine.getFormattedState(), isAnimated);
     drawVectorView('vectorCanvas', engine);
     updatePhaseText("phase", engine);
+    document.getElementById("prob").textContent = `Találati valószínűség: ${engine.getProbability()}`
 }
 
 function init(size) {
@@ -67,25 +71,8 @@ function init(size) {
     state = new Array(N).fill(1/Math.sqrt(N));
 }
 
-function getCoordinates(state, targetInd){
-    let y = state[targetInd];
-
-    let sumOther = 0;
-    for (let i = 0; i < state.length; i++) {
-        if (i !== targetInd) sumOther += state[i];
-    }
-    
-    const x = sumOther / Math.sqrt(state.length - 1);
-    const angleRad = Math.atan2(y, x);
-    
-    return { x, y, angleRad };
-}
-
-function getProbability(state, targetInd){
-    return Math.pow(state[targetInd], 2);
-}
-
 function stepEngine(isAnimated) {
     engine.stepForward();
     render(isAnimated);
+
 }

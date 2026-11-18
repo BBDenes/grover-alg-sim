@@ -88,8 +88,13 @@ body{
     
 }
 
-input{
-    margin-right: 1rem;
+h1, #phase{
+    text-align: center;
+}
+
+#infoContainer{
+    display: flex;
+    gap: 1rem;
 }
 
 svg.icon {
