@@ -94,6 +94,7 @@ h1, #phase{
 
 #infoContainer{
     display: flex;
+    justify-content: center;
     gap: 1rem;
 }
 

@@ -62,7 +62,7 @@ function render(isAnimated) {
     updateGraph(graph, engine.getFormattedState(), isAnimated);
     drawVectorView('vectorCanvas', engine);
     updatePhaseText("phase", engine);
-    document.getElementById("prob").textContent = `Találati valószínűség: ${engine.getProbability()}`
+    document.getElementById("prob").textContent = `Találati valószínűség: ${engine.getProbability().toFixed(2)}`
 }
 
 function init(size) {
